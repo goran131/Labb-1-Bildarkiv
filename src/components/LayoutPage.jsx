@@ -1,29 +1,12 @@
-import { useState, useEffect } from 'react'
-import ImageGroupPage from './ImageGroupPage'
-import {
-    createBrowserRouter,
-    Outlet,
-    RouterProvider,
-    Link,
-    useLocation
-} from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const LayoutPage = () => {
-    // const [data, setData] = useState([])
-    /**
-    useEffect(() => {
-        fetch('./image-data.json')
-            .then((response) => response.json())
-            .then((data) => setData(data))
-    }, [])
-    */
     const location = useLocation()
     const imagegroups = location.state
 
     return (
         <>
             <div>
-                <p>Gorros was here</p>
                 <ul>
                     {imagegroups.map((group) => (
                         <li key={group.id}>
@@ -37,9 +20,6 @@ const LayoutPage = () => {
                     ))}
                 </ul>
             </div>
-            <main>
-                <Outlet />
-            </main>
         </>
     )
 }

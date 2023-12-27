@@ -2,12 +2,20 @@ import './App.css'
 import Home from './components/Home'
 import LayoutPage from './components/LayoutPage'
 import ImageGroupPage from './components/ImageGroupPage'
-
-import { Routes, Route, Outlet } from 'react-router-dom'
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+/** import { useState, useEffect } from 'react' */
 
 function App() {
-    const groups = [
+    // Jag har inte fått detta att fungera, därför har jag hårdkodat datan imagegroups i denna filen
+    // const [data, setData] = useState([])
+    /**
+    useEffect(() => {
+        fetch('./image-data.json')
+            .then((response) => response.json())
+            .then((data) => setData(data))
+    }, [])
+    */
+    const imagegroups = [
         {
             id: 0,
             name: 'Familj',
@@ -82,7 +90,7 @@ function App() {
         }
     ]
 
-    const [imagegroups, setGroups] = useState(groups)
+    // const [imagegroups, setGroups] = useState(groups)
 
     return (
         <>

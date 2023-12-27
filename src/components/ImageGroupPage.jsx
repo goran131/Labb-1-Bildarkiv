@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+/** import { useState, useEffect } from 'react' */
 import { useParams, useLocation } from 'react-router-dom'
 
 function ImageGroupPage() {
@@ -8,7 +8,7 @@ function ImageGroupPage() {
 
     return (
         <>
-            <p>Gorros was here with id={id}</p>
+            <p>Imagegroup with id={id}</p>
         </>
     )
 }

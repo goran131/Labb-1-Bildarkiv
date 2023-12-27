@@ -1,12 +1,4 @@
-import LayoutPage from './LayoutPage'
-import {
-    createBrowserRouter,
-    Link,
-    Outlet,
-    RouterProvider,
-    Routes,
-    Route
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Home({ groups }) {
     return (
