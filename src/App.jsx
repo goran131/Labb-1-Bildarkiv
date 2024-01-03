@@ -2,20 +2,25 @@ import './App.css'
 import Home from './components/Home'
 import LayoutPage from './components/LayoutPage'
 import ImageGroupPage from './components/ImageGroupPage'
+import NewGroupPage from './components/NewGroupPage'
 import { Routes, Route } from 'react-router-dom'
-/** import { useState, useEffect } from 'react' */
+import { useState, useEffect } from 'react'
 
 function App() {
-    // Jag har inte fått detta att fungera, därför har jag hårdkodat datan imagegroups i denna filen
-    // const [data, setData] = useState([])
+    // Jag har inte fått detta att fungera, därför har jag hårdkodat imagegroups nedanför.
     /**
+    const [imagegroups, setImagegroups] = useState([])
+
     useEffect(() => {
-        fetch('./image-data.json')
+        fetch('http://localhost:5173/components/image-data.json')
             .then((response) => response.json())
-            .then((data) => setData(data))
+            .then((imagegroups) => setImagegroups(imagegroups))
     }, [])
     */
-    const imagegroups = [
+
+    const [imagegroups, setImagegroups] = useState([])
+
+    const groups = [
         {
             id: 0,
             name: 'Familj',
@@ -23,43 +28,33 @@ function App() {
             images: [
                 {
                     id: 0,
-                    'image-url': './assets/father.jpg',
-                    'image-description': 'Min far'
+                    imageUrl: '/images/kalle.jpg',
+                    imageDescription: 'Jag Kalle'
                 },
                 {
                     id: 1,
-                    'image-url': './assets/mother.jpg',
-                    'image-description': 'Min mor'
+                    imageUrl: '/images/father.jpg',
+                    imageDescription: 'Min far'
                 },
                 {
                     id: 2,
-                    'image-url': './assets/brother.jpg',
-                    'image-description': 'Min bror'
+                    imageUrl: '/images/mother.jpg',
+                    imageDescription: 'Min mor'
                 },
                 {
                     id: 3,
-                    'image-url': './assets/sister.jpg',
-                    'image-description': 'Min syster'
+                    imageUrl: '/images/brother.jpg',
+                    imageDescription: 'Min bror'
                 },
                 {
                     id: 4,
-                    'image-url': './assets/brother-son-1.jpg',
-                    'image-description': 'Min äldsta brorson'
+                    imageUrl: '/images/sister.jpg',
+                    imageDescription: 'Min syster'
                 },
                 {
                     id: 5,
-                    'image-url': './assets/brother-son-2.jpg',
-                    'image-description': 'Min yngsta brorson'
-                },
-                {
-                    id: 6,
-                    'image-url': './assets/sister-son.jpg',
-                    'image-description': 'Min systerson'
-                },
-                {
-                    id: 6,
-                    'image-url': './assets/sister-daughter.jpg',
-                    'image-description': 'Min systerdotter'
+                    imageUrl: '/images/sister-daughter.jpg',
+                    imageDescription: 'Min systerdotter'
                 }
             ]
         },
@@ -70,39 +65,66 @@ function App() {
             images: [
                 {
                     id: 0,
-                    'image-url': './assets/mini.jpg',
-                    'image-description':
+                    imageUrl: '/images/austin-mini-cooper-970s.webp',
+                    imageDescription:
                         'Min första bil var en Austin Mini Cooper 970S från 1965.'
                 },
                 {
                     id: 1,
-                    'image-url': './assets/ferrari.jpg',
-                    'image-description':
+                    imageUrl: '/images/ferrari-308-gts.webp',
+                    imageDescription:
                         'Min andra bil var en Ferrari 308 GTS QV från 1984. Gissa vem som har kört den innan.'
                 },
                 {
                     id: 2,
-                    'image-url': './assets/brother.jpg',
-                    'image-description':
+                    imageUrl: '/images/mercedes-amg-gt.jpg',
+                    imageDescription:
                         'Min tredje bil en Mercedes-AMG GT Coupé från 2023.'
+                }
+            ]
+        },
+        {
+            id: 2,
+            name: 'Paris 2016',
+            description: 'Semesterresa till Paris år 2016',
+            images: [
+                {
+                    id: 0,
+                    imageUrl: '/images/eiffeltornet-2.jpg',
+                    imageDescription: 'Jag framför Eiffeltornet'
+                },
+                {
+                    id: 1,
+                    imageUrl: '/images/triumfbågen-paris.jpg',
+                    imageDescription: 'Jag framför Triumfbågen'
+                },
+                {
+                    id: 2,
+                    imageUrl: '/images/versailles.jpg',
+                    imageDescription: 'Pappa och jag framför Versailles'
                 }
             ]
         }
     ]
 
-    // const [imagegroups, setGroups] = useState(groups)
+    useEffect(() => {
+        setImagegroups(groups)
+    }, [])
 
     return (
         <>
             <Routes>
+                <Route path="/" element={<Home imagegroups={imagegroups} />} />
                 <Route path="/components/LayoutPage" element={<LayoutPage />} />
                 <Route
                     path="/components/ImageGroupPage/:id"
                     element={<ImageGroupPage />}
                 />
+                <Route
+                    path="/components/NewGroupPage"
+                    element={<NewGroupPage />}
+                />
             </Routes>
-
-            <Home groups={imagegroups} />
         </>
     )
 }
